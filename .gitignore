@@ -1,0 +1,8 @@
+*.pkg.tar.xz
+common.o
+config.h
+libsurf-webext.o
+libsurf-webext.so
+pkg/
+surf
+surf.o
