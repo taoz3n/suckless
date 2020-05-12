@@ -1,5 +1,7 @@
 PREFIX ?= /usr/local
 
+blocks.h:
+	cp blocks.def.h blocks.h
 output: dwmblocks.c blocks.h
 	cc `pkg-config --cflags x11` `pkg-config --libs x11` dwmblocks.c -o dwmblocks
 clean:
