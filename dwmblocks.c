@@ -8,7 +8,6 @@
 #define CMDLENGTH		100
 
 typedef struct {
-	const char *icon;
 	const char *command;
 	const unsigned int interval;
 	const int signal;
@@ -39,15 +38,13 @@ static void (*writestatus) () = setroot;
 //opens process *cmd and stores output in *output
 void getcmd(const Block *block, char *output)
 {
-	strcpy(output, block->icon);
 	const char *cmd = block->command;
 	FILE *cmdf = popen(cmd, "r");
 	if (!cmdf)
 		return;
 
-	int i = strlen(block->icon);
-	fgets(output+i, CMDLENGTH-i, cmdf);
-	i = strlen(output);
+	fgets(output, CMDLENGTH, cmdf);
+	int i = strlen(output);
 
 	// delete \n from cmd output
 	output[i - 1] = '\0';
